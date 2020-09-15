@@ -36,6 +36,19 @@ document.addEventListener('DOMContentLoaded', () => {
     [1, width, width+1, width*2+1]
   ]
 
+  const oTetromino = [
+    [0, 1, width, width+1],
+    [0, 1, width, width+1],
+    [0, 1, width, width+1],
+    [0, 1, width, width+1]
+  ]
+
+  const iTetromino = [
+    [1, width+1, width*2+1, width*3+1],
+    [width, width+1, width+2, width+3],
+    [1, width+1, width*2+1, width*3+1],
+    [width, width+1, width+2, width+3]
+  ]
 
   console.log(squares)
 })
