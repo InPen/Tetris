@@ -50,7 +50,20 @@ document.addEventListener('DOMContentLoaded', () => {
     [width, width+1, width+2, width+3]
   ]
 
-  const tetraminoes = [lTetromino, zTetromino, tTetromino, oTetromino, iTetromino]
+  const tetrominoes = [lTetromino, zTetromino, tTetromino, oTetromino, iTetromino]
+
+  let currentPosition = 4
+  let current = tetrominoes [0] [0]
+
+// draw first rotation of the first tetromino
+  function draw() {
+    current.forEach(index => {
+      squares[currentPosition + index].classList.add('tetromino')
+    })
+  }
+
+
+
   console.log(squares)
 })
 
