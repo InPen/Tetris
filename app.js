@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     [width, width+1, width+2, width+3]
   ]
 
+  const tetraminoes = [lTetromino, zTetromino, tTetromino, oTetromino, iTetromino]
   console.log(squares)
 })
 
