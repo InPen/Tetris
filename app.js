@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   ]
 
   const zTetromino = [
-    [0, width, width+1, width2*1],
+    [0, width, width+1, width*2+1],
     [width+1, width+2, width*2, width*2+1],
     [0, width, width+1, width*2+1],
     [width+1, width+2, width*2, width*2+1]
@@ -53,15 +53,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const tetrominoes = [lTetromino, zTetromino, tTetromino, oTetromino, iTetromino]
 
   let currentPosition = 4
-  let current = tetrominoes [0] [0]
 
-// draw first rotation of the first tetromino
+// randomly select tetromino and rotation
+  let random = Math.floor(Math.random()*tetrominoes.lenght)
+  console.log(random)
+  let current = tetrominoes[0][0]
+  // draw first rotation of the first tetromino
   function draw() {
     current.forEach(index => {
       squares[currentPosition + index].classList.add('tetromino')
     })
   }
-
+  draw()
 
 
   console.log(squares)
