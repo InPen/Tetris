@@ -79,6 +79,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //make tetromino go down grid
   timerId = setInterval(moveDown, 1000)
+
+//eventListeners for keyCodes
+  function control(event) {
+    if(event.keyCode === 37) {
+      moveLeft()
+    }
+  }
+  document.addEventListener('keyup', control)
+
 //move down function
   function moveDown() {
     undraw()
@@ -101,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //move tetrominoes left
 //stop tetrominoes once they're at the edge
-  function moveLeft () {
+  function moveLeft() {
     undraw()
     const isAtLeftEdge = current.some(index => (currentPosition + index) % width === 0)
     if(!isAtLeftEdge) currentPosition -=1
