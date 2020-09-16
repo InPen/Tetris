@@ -84,11 +84,17 @@ document.addEventListener('DOMContentLoaded', () => {
     undraw()
     currentPosition += width
     draw()
+    freeze()
   }
 //stop shape and counter from keep going off the grid using '.some' (if at least 1 statement is true some will run)
   function freeze() {
-    if(current.some(index + squares[currentPosition + index + width].classList.contains('taken'))) {
+    if(current.some(index => squares[currentPosition + index + width].classList.contains('taken'))) {
       current.forEach(index => squares[currentPosition + index].classList.add('taken'))
+// have a new tetromino fall
+      random = Math.floor(Math.random() * tetrominoes.length)
+      current = tetrominoes[random][currentRotation]
+      currentPosition = 4
+      draw()
     }
   }
 
