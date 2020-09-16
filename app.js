@@ -87,9 +87,9 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (event.keyCode === 38) {
       //rotate()
     } else if (event.keyCode === 39) {
-      //moveRight()
+      moveRight()
     } else if (event.keyCode === 40) {
-      //moveDown()
+      moveDown()
     }
   }
   document.addEventListener('keyup', control)
@@ -127,7 +127,18 @@ document.addEventListener('DOMContentLoaded', () => {
     draw()
   }
 
-
+// move tetrominoes right
+//stop tetrominoes once they're at the edge
+  function moveRight() {
+    undraw()
+    const isAtRightEdge = current.some(index => (currentPosition + index) % width === 0)
+    if(!isAtRightEdge) currentPosition +=1
+// if some of the squares go into the right space that has a div of class 'taken' push it back one space
+    if(current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
+      currentPosition -=1
+    }
+    draw()
+  }
 
 
 
