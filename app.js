@@ -57,15 +57,16 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentRotation = 0
 // randomly select tetromino and rotation
   let random = Math.floor(Math.random()*tetrominoes.length)
-  console.log(random)
+  // console.log(random)
   let current = tetrominoes[random][currentRotation]
-  console.log(current)
-  // draw tetromino
+  // console.log(current)
+// draw tetromino
   function draw() {
     current.forEach(index => {
       squares[currentPosition + index].classList.add('tetromino')
     })
   }
+// see shape on grid
   // draw()
 
 //undraw tetromino
@@ -76,7 +77,24 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  console.log(squares)
+//make tetromino go down grid
+  timerId = setInterval(moveDown, 1000)
+//move down function
+  function moveDown() {
+    undraw()
+    currentPosition += width
+    draw()
+  }
+
+
+
+
+
+
+
+
+
+  // console.log(squares)
 })
 
 // console.log('butts')
