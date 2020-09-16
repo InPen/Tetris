@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
 //stop tetrominoes once they're at the edge
   function moveRight() {
     undraw()
-    const isAtRightEdge = current.some(index => (currentPosition + index) % width === 0)
+    const isAtRightEdge = current.some(index => (currentPosition + index) % width === width -1)
     if(!isAtRightEdge) currentPosition +=1
 // if some of the squares go into the right space that has a div of class 'taken' push it back one space
     if(current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
