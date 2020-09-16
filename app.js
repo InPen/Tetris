@@ -99,6 +99,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
+//move tetrominoes left
+//stop tetrominoes once they're at the edge
+  function moveLeft () {
+    undraw()
+    const isAtLeftEdge = current.some(index => (currentPosition + index) % width === 0)
+    if(!isAtLeftEdge) currentPosition -=1
+// if some of the squares go into the left space that has a div of class 'taken' push it back one space
+    if(current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
+      currentPosition +=1
+    }
+    draw()
+  }
+
 
 
 
