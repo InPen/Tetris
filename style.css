@@ -13,3 +13,11 @@
  .tetromino {
    background: black;
  }
+
+.miniGrid {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  flex-wrap: wrap;
+  background-color:#6dcfdf;
+}
