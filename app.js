@@ -6,11 +6,13 @@ document.addEventListener('DOMContentLoaded', () => {
 // Array.from() allows each grid to have an expecific index
   let squares = Array.from(document.querySelectorAll('.grid div'))
 // acces span to display score
-  const scoreDisplay = document.getElementById('#score')
+  const scoreDisplay = document.getElementById('score')
 // button functionality
-  const startButton = document.getElementById('#startButton')
+  const startButton = document.getElementById('startButton')
 // telling js the size of our grid
   const width = 10
+// create timmer
+  let timerId
 
   let nextRandom = 0
 
@@ -181,6 +183,20 @@ document.addEventListener('DOMContentLoaded', () => {
       displaySquares[displayIndex + index].classList.add('tetromino')
     })
   }
+
+// start and pause functionality
+  startButton.addEventListener('click', () => {
+    // console.log('butts')
+    if (timerId) {
+      clearInterval(timerId)
+      timerId = null
+    } else {
+      draw()
+      timerId = setInterval(moveDown, 1000)
+      nextRandom = Math.floor(Math.random()*tetrominoes.length)
+      displayShape()
+    }
+  })
 
 
 
