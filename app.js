@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const width = 10
 // create timmer
   let timerId
-
+  let score = 0
   let nextRandom = 0
 
 
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 //make tetromino go down grid
-  timerId = setInterval(moveDown, 1000)
+  // timerId = setInterval(moveDown, 1000)
 
 //eventListeners for keyCodes
   function control(event) {
@@ -117,6 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
       currentPosition = 4
       draw()
       displayShape()
+      addScore()
     }
   }
 
@@ -197,6 +198,29 @@ document.addEventListener('DOMContentLoaded', () => {
       displayShape()
     }
   })
+
+//add score
+  function addScore() {
+    for (let i=0; i < 199; i +=width) {
+      const row = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+7, i+8, i+9]
+      if(row.every(index => squares[index].classList.contains('taken'))) {
+        score +=10
+        scoreDisplay.innerHTML = score
+        row.forEach(index => {
+          squares[index].classList.remove('taken')
+          squares[index].classList.remove('tetromino')
+        })
+//rome all the divs that have been filled in the first buttom row
+        const squaresRemoved = squares.splice(i, width)
+        // console.log(squaresRemoved)
+        squares = squaresRemoved.concat(squares)
+        squares.forEach(cell => grid.appendChild(cell))
+      }
+    }
+  }
+
+
+
 
 
 
