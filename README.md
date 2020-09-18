@@ -2,4 +2,4 @@
 inspired by Ania Kubów
 
 
-![alt text](https://imgur.com/a/EwJcn4X)
+![wire frames](images/wireframes.jpg)
