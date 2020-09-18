@@ -1,3 +1,10 @@
+#startButton {
+  margin-top: 20px;
+  margin-left: 50px;
+  border:0.16em solid rgba(255,255,255,0);
+  border-radius:2em;
+}
+
 .container {
   display: flex;
 }
@@ -8,7 +15,7 @@
   height: 400px;
   display: flex;
   flex-wrap: wrap;
-  background-color:#99cdff;
+  background-color:#b4b4b4;
 }
  .grid div {
    height: 20px;
@@ -25,7 +32,7 @@
   height: 80px;
   display: flex;
   flex-wrap: wrap;
-  background-color:#6dcfdf;
+  background-color:#a7a7a7;
 }
 .miniGrid div {
   height: 20px;
