@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
 // telling js the size of our grid
   const width = 10
 
+  let nextRandom = 0
+
 
 //Tetrominoes
 //each array index represents a part of the tetromino shape
@@ -106,10 +108,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if(current.some(index => squares[currentPosition + index + width].classList.contains('taken'))) {
       current.forEach(index => squares[currentPosition + index].classList.add('taken'))
 // have a new tetromino fall
-      random = Math.floor(Math.random() * tetrominoes.length)
+//passing nextRandom value into the random value
+      random = nextRandom
+      nextRandom = Math.floor(Math.random() * tetrominoes.length)
       current = tetrominoes[random][currentRotation]
       currentPosition = 4
       draw()
+      displayShape()
     }
   }
 
@@ -152,6 +157,31 @@ document.addEventListener('DOMContentLoaded', () => {
     current = tetrominoes[random][currentRotation]
     draw()
   }
+
+//show incoming shape
+  const displaySquares = document.querySelectorAll('.miniGrid div')
+  const displayWidth = 4
+  let displayIndex = 0
+//array of tetraminoes in their first rotation
+//we'll only be displaying what shape is coming up next to the user, not it's exact location
+  const upNextTetrominoes = [
+    [1, displayWidth+1, displayWidth*2+1, 2], //lTetromino
+    [0, displayWidth, displayWidth+1, displayWidth*2+1], //zTetromino
+    [1, displayWidth, displayWidth+1, displayWidth+2],//tTetromino
+    [0, 1, displayWidth, displayWidth+1], //oTetromino
+    [1, displayWidth+1, displayWidth*2+1, displayWidth*3+1] //iTetromino
+  ]
+
+  function displayShape() {
+//remove trace of tetromino on miniGrid
+    displaySquares.forEach(square => {
+      square.classList.remove('tetromino')
+    })
+    upNextTetrominoes[nextRandom].forEach(index => {
+      displaySquares[displayIndex + index].classList.add('tetromino')
+    })
+  }
+
 
 
   // console.log(squares)
