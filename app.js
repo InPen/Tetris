@@ -225,11 +225,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if(current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
       scoreDisplay.innerHTML = 'Game Over'
       clearInterval(timerId)
-//clearBoard
+// game clears and reloads but `Game Over` message disappears too fast
+      window.location.reload()
+
     }
   }
-
-
 
 
   // console.log(squares)
